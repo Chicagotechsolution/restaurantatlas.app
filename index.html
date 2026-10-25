@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurant Atlas — The Restaurant Discovery App That Remembers</title>
+<meta name="description" content="Restaurant Atlas is a discovery app in development: pin the places you want to try, map the ones you loved, and plan the next meal in any city. Join the waitlist.">
+<link rel="canonical" href="https://restaurantatlas.app/">
+<meta property="og:title" content="Restaurant Atlas — pin it, try it, map it">
+<meta property="og:description" content="A restaurant discovery app that keeps your want-to-try list on a map. In development — join the waitlist.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://restaurantatlas.app/">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23142430'/%3E%3Cpath d='M16 5c-4.4 0-8 3.5-8 7.9C8 18.8 16 27 16 27s8-8.2 8-14.1C24 8.5 20.4 5 16 5z' fill='%23FF6B57'/%3E%3Ccircle cx='16' cy='13' r='3.4' fill='%23142430'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Restaurant Atlas","url":"https://restaurantatlas.app/","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"A restaurant discovery app that keeps your want-to-try list, visits, and notes on a personal map. Currently in development.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/PreOrder"}}
+</script>
+<style>
+:root{
+  --deep:#142430; --sea:#1E3442; --mist:#EAF2F2; --coral:#FF6B57;
+  --mint:#7FD8C4; --sand:#F2C94C; --body:#2B3B45; --line:#D3E0DF;
+  --disp:"Outfit",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--mist);color:var(--body);font-family:var(--sans);font-size:16.5px;line-height:1.6}
+a{color:#0E6E5C}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+header.site{position:sticky;top:0;background:rgba(234,242,242,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:5}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:13px;padding-bottom:13px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--deep)}
+.brand b{font-family:var(--disp);font-weight:700;font-size:1.25rem}
+nav.main{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+nav.main a{color:var(--deep);text-decoration:none;font-size:.93rem;font-weight:500}
+nav.main a:hover{color:#0E6E5C;text-decoration:underline;text-underline-offset:4px}
+nav.main a.cta{background:var(--deep);color:#fff;padding:9px 16px;border-radius:999px;text-decoration:none}
+nav.main a.cta:hover{background:#0C1922;color:#fff}
+.hero{background:var(--deep);color:var(--mist);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding-top:64px;padding-bottom:64px}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.07;letter-spacing:-.01em}
+.hero p.lede{margin-top:18px;font-size:1.1rem;color:#B9CDD1;max-width:44ch}
+.hero .status{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;font-size:.85rem;font-weight:600;color:var(--mint);border:1px solid #2E4A58;border-radius:999px;padding:6px 14px}
+.hero .status i{width:8px;height:8px;border-radius:50%;background:var(--mint);display:inline-block}
+.hero .actions{margin-top:26px}
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.98rem;border:0;cursor:pointer;font-family:var(--sans)}
+.btn-coral{background:var(--coral);color:#30100B}
+.btn-coral:hover{background:#F4553F}
+.phone-slot{display:flex;justify-content:center}
+.phone-slot svg{width:min(300px,78vw);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.35))}
+section{padding:62px 0}
+h2{font-family:var(--disp);font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;color:var(--deep);margin-bottom:12px}
+.kicker{color:var(--coral);font-weight:600;font-size:.92rem;margin-bottom:6px}
+.features .row{display:grid;grid-template-columns:72px 1fr;gap:22px;align-items:start;padding:26px 0;border-bottom:1px solid var(--line)}
+.features .row:last-child{border-bottom:0}
+.features .row svg{width:56px;height:56px}
+.features .row h3{font-family:var(--disp);font-weight:600;font-size:1.2rem;color:var(--deep);margin-bottom:6px}
+.features .row p{max-width:62ch}
+.pins{background:var(--sea);color:var(--mist)}
+.pins h2{color:#fff}
+.pins .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
+.pins p{color:#C3D5D8;max-width:48ch;margin-bottom:12px}
+.pin-legend{list-style:none;padding:0;margin:18px 0 0}
+.pin-legend li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed #33505E;font-size:.98rem}
+.pin-legend li:last-child{border-bottom:0}
+.pin-legend svg{flex:none}
+.pins figure{margin:0}
+.pins figure svg{width:100%;height:auto;border-radius:14px}
+.pins figcaption{font-size:.82rem;color:#8FABB1;margin-top:10px}
+.wait{border-top:1px solid var(--line)}
+.wait .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.wait form{display:grid;gap:13px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 10px 30px rgba(20,36,48,.08)}
+label{font-weight:600;font-size:.9rem;color:var(--deep)}
+input{width:100%;padding:12px 13px;border:1.5px solid #9FB4B9;border-radius:10px;background:#fff;font:inherit;font-size:.97rem}
+.form-note{font-size:.86rem;color:#5A7077}
+.wait .faq dt{font-family:var(--disp);font-weight:600;color:var(--deep);padding-top:16px;font-size:1.02rem}
+.wait .faq dd{margin:5px 0 0;font-size:.96rem;color:#44565F}
+footer.site{background:var(--deep);color:#AFC4C9;padding:40px 0 28px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer h3{font-family:var(--disp);font-size:1.1rem;margin-bottom:10px;color:#fff}
+footer a{color:#AFC4C9;text-decoration:none;display:block;padding:4px 0;font-size:.93rem}
+footer a:hover{color:#fff;text-decoration:underline}
+footer .fineprint{grid-column:1/-1;border-top:1px solid #2A4150;margin-top:22px;padding-top:15px;font-size:.83rem;color:#7E99A0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:880px){
+  .hero .wrap,.pins .wrap,.wait .wrap{grid-template-columns:1fr}
+  .phone-slot{order:2}
+  footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:540px){
+  .features .row{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Restaurant Atlas home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#142430"/><path d="M16 5c-4.4 0-8 3.5-8 7.9C8 18.8 16 27 16 27s8-8.2 8-14.1C24 8.5 20.4 5 16 5z" fill="#FF6B57"/><circle cx="16" cy="13" r="3.4" fill="#142430"/></svg>
+      <b>Restaurant Atlas</b>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#pins">The pin system</a>
+      <a class="cta" href="#waitlist">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <p class="status"><i aria-hidden="true"></i>In development — iOS first, Android next</p>
+      <h1>Your want-to-try list deserves better than screenshots.</h1>
+      <p class="lede">Restaurant Atlas turns every "we should go here" into a pin on your own map. Save places, drop a note, and when you're hungry in any neighborhood, see what you've been meaning to try — right there.</p>
+      <div class="actions">
+        <a class="btn btn-coral" href="#waitlist">Join the waitlist</a>
+      </div>
+    </div>
+    <div class="phone-slot">
+      <svg viewBox="0 0 320 640" role="img" aria-label="Phone mockup showing the Restaurant Atlas map screen with saved restaurant pins">
+        <rect x="6" y="6" width="308" height="628" rx="44" fill="#0C1922"/>
+        <rect x="16" y="16" width="288" height="608" rx="36" fill="#1E3442"/>
+        <rect x="124" y="28" width="72" height="18" rx="9" fill="#0C1922"/>
+        <!-- map area -->
+        <g>
+          <rect x="16" y="78" width="288" height="420" fill="#24404F"/>
+          <!-- river -->
+          <path d="M16 110 C80 130 120 180 140 250 C156 306 150 380 120 498 L160 498 C190 380 196 300 180 240 C158 162 110 104 16 86 Z" fill="#1D4B5C"/>
+          <!-- park -->
+          <path d="M210 360 L290 340 L304 356 L304 430 L252 446 L214 420 Z" fill="#1C5B52" opacity=".7"/>
+          <!-- arterial roads -->
+          <g stroke="#2F5060" stroke-width="9" fill="none" stroke-linecap="round">
+            <path d="M16 170 C90 166 200 174 304 168"/>
+            <path d="M16 330 C110 324 210 336 304 328"/>
+            <path d="M212 78 C208 180 216 320 210 498"/>
+          </g>
+          <!-- diagonal avenue -->
+          <path d="M30 498 L270 78" stroke="#2F5060" stroke-width="7" fill="none"/>
+          <!-- minor streets -->
+          <g stroke="#2A4857" stroke-width="3" fill="none">
+            <path d="M16 128 H304M16 250 C110 244 210 256 304 248M16 290 H304M16 410 H304M16 452 H304"/>
+            <path d="M58 78 V498M100 78 V498M160 78 V498M252 78 V345M284 78 V340M252 450 V498M284 448 V498"/>
+          </g>
+          <!-- block parcels -->
+          <g fill="#28485A" opacity=".55">
+            <rect x="66" y="180" width="26" height="24"/><rect x="108" y="184" width="42" height="22"/>
+            <rect x="66" y="298" width="26" height="24"/><rect x="224" y="186" width="20" height="30"/>
+            <rect x="110" y="340" width="40" height="24"/><rect x="224" y="250" width="22" height="30"/>
+          </g>
+          <!-- pins -->
+          <g>
+            <path d="M84 196c-9 0-16 7-16 15.8C68 223.6 84 240 84 240s16-16.4 16-28.2C100 203 93 196 84 196z" fill="#FF6B57"/><circle cx="84" cy="212" r="6" fill="#1E3442"/>
+            <path d="M232 150c-9 0-16 7-16 15.8 0 11.8 16 28.2 16 28.2s16-16.4 16-28.2C248 157 241 150 232 150z" fill="#7FD8C4"/><circle cx="232" cy="166" r="6" fill="#1E3442"/>
+            <path d="M186 300c-9 0-16 7-16 15.8 0 11.8 16 28.2 16 28.2s16-16.4 16-28.2C202 307 195 300 186 300z" fill="#FF6B57"/><circle cx="186" cy="316" r="6" fill="#1E3442"/>
+            <path d="M68 360c-9 0-16 7-16 15.8 0 11.8 16 28.2 16 28.2s16-16.4 16-28.2C84 367 77 360 68 360z" fill="#F2C94C"/><circle cx="68" cy="376" r="6" fill="#1E3442"/>
+            <path d="M262 390c-9 0-16 7-16 15.8 0 11.8 16 28.2 16 28.2s16-16.4 16-28.2C278 397 271 390 262 390z" fill="#7FD8C4"/><circle cx="262" cy="406" r="6" fill="#1E3442"/>
+          </g>
+        </g>
+        <!-- card -->
+        <g>
+          <rect x="30" y="462" width="260" height="92" rx="16" fill="#EAF2F2"/>
+          <rect x="46" y="478" width="120" height="13" rx="6" fill="#142430"/>
+          <rect x="46" y="500" width="180" height="9" rx="4" fill="#8AA3AA"/>
+          <rect x="46" y="518" width="150" height="9" rx="4" fill="#8AA3AA"/>
+          <rect x="206" y="476" width="68" height="24" rx="12" fill="#FF6B57"/>
+        </g>
+        <!-- tab bar -->
+        <g>
+          <rect x="16" y="566" width="288" height="58" rx="0" fill="#0C1922"/>
+          <circle cx="76" cy="594" r="9" fill="#FF6B57"/>
+          <circle cx="160" cy="594" r="9" fill="#33505E"/>
+          <circle cx="244" cy="594" r="9" fill="#33505E"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<section id="features" class="features">
+  <div class="wrap">
+    <p class="kicker">What it does</p>
+    <h2>A memory for every meal you meant to have.</h2>
+    <div class="row">
+      <svg viewBox="0 0 56 56" fill="none" stroke="#142430" stroke-width="2.4" aria-hidden="true"><path d="M28 8c-7.7 0-14 6.1-14 13.8C14 32.1 28 48 28 48s14-15.9 14-26.2C42 14.1 35.7 8 28 8z"/><circle cx="28" cy="22" r="5.5"/></svg>
+      <div>
+        <h3>Pin it the moment you hear about it</h3>
+        <p>A friend's recommendation, a dish you scrolled past, a window you walked by — save it in two taps with a note on why. Pins land on your map, not in a buried notes app.</p>
+      </div>
+    </div>
+    <div class="row">
+      <svg viewBox="0 0 56 56" fill="none" stroke="#142430" stroke-width="2.4" aria-hidden="true"><circle cx="28" cy="28" r="20"/><path d="M28 14v14l9 7"/></svg>
+      <div>
+        <h3>See what's near you, right now</h3>
+        <p>Standing somewhere hungry? The map shows your saved places around you first — the ones you actually wanted — before anything else.</p>
+      </div>
+    </div>
+    <div class="row">
+      <svg viewBox="0 0 56 56" fill="none" stroke="#142430" stroke-width="2.4" aria-hidden="true"><path d="M10 46V22l18-12 18 12v24"/><path d="M20 46V32h16v14"/><path d="M10 46h36"/></svg>
+      <div>
+        <h3>Your taste, your atlas</h3>
+        <p>After a visit, mark it loved, fine, or skip — with your own notes on what to order. Over time you build a personal atlas of every city you eat in.</p>
+      </div>
+    </div>
+    <div class="row">
+      <svg viewBox="0 0 56 56" fill="none" stroke="#142430" stroke-width="2.4" aria-hidden="true"><circle cx="18" cy="20" r="7"/><circle cx="38" cy="20" r="7"/><path d="M6 46c0-8 5.5-13 12-13s12 5 12 13M26 46c0-8 5.5-13 12-13s12 5 12 13"/></svg>
+      <div>
+        <h3>Share maps with people you trust</h3>
+        <p>Swap your Chicago taco map for a friend's Queens dumpling map. Shared maps stay between you — no public reviews, no ratings warfare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pins" class="pins">
+  <div class="wrap">
+    <div>
+      <p class="kicker">The pin system</p>
+      <h2>Three pins. That's the whole method.</h2>
+      <p>Most food apps drown you in strangers' star ratings. Restaurant Atlas keeps score the way you actually think about restaurants.</p>
+      <ul class="pin-legend">
+        <li>
+          <svg width="26" height="30" viewBox="0 0 26 30" aria-hidden="true"><path d="M13 1C6.4 1 1 6.3 1 12.9 1 21.8 13 29 13 29s12-7.2 12-16.1C25 6.3 19.6 1 13 1z" fill="#F2C94C"/><circle cx="13" cy="13" r="4.4" fill="#1E3442"/></svg>
+          <span><strong>Want to try</strong> — saved with the note that made you save it.</span>
+        </li>
+        <li>
+          <svg width="26" height="30" viewBox="0 0 26 30" aria-hidden="true"><path d="M13 1C6.4 1 1 6.3 1 12.9 1 21.8 13 29 13 29s12-7.2 12-16.1C25 6.3 19.6 1 13 1z" fill="#FF6B57"/><circle cx="13" cy="13" r="4.4" fill="#1E3442"/></svg>
+          <span><strong>Loved it</strong> — your keepers, with what to order next time.</span>
+        </li>
+        <li>
+          <svg width="26" height="30" viewBox="0 0 26 30" aria-hidden="true"><path d="M13 1C6.4 1 1 6.3 1 12.9 1 21.8 13 29 13 29s12-7.2 12-16.1C25 6.3 19.6 1 13 1z" fill="#7FD8C4"/><circle cx="13" cy="13" r="4.4" fill="#1E3442"/></svg>
+          <span><strong>Been there</strong> — visited, noted, no need to re-decide.</span>
+        </li>
+      </ul>
+    </div>
+    <figure>
+      <svg viewBox="0 0 560 360" role="img" aria-label="Illustration of a neighborhood map covered in the three pin types">
+        <rect width="560" height="360" rx="14" fill="#24404F"/>
+        <!-- river -->
+        <path d="M0 40 C120 60 220 54 320 90 C420 126 500 120 560 150 L560 190 C492 158 416 166 314 128 C214 92 116 98 0 78 Z" fill="#1D4B5C"/>
+        <!-- park -->
+        <path d="M30 250 L140 236 L170 262 L160 330 L60 344 L26 300 Z" fill="#1C5B52" opacity=".7"/>
+        <!-- arterials -->
+        <g stroke="#2F5060" stroke-width="10" fill="none" stroke-linecap="round">
+          <path d="M0 120 C180 112 380 128 560 118"/>
+          <path d="M0 260 C190 252 370 268 560 258"/>
+          <path d="M390 0 C386 120 394 240 390 360"/>
+        </g>
+        <!-- diagonal boulevard -->
+        <path d="M60 360 L520 0" stroke="#2F5060" stroke-width="8" fill="none"/>
+        <!-- minor streets -->
+        <g stroke="#2A4857" stroke-width="4" fill="none">
+          <path d="M0 190 C180 184 380 196 560 188M0 80 H560M0 320 H560"/>
+          <path d="M80 0 V360M170 0 V230M170 338 V360M280 0 V360M470 0 V360M520 130 V360"/>
+        </g>
+        <!-- block parcels -->
+        <g fill="#28485A" opacity=".55">
+          <rect x="96" y="132" width="48" height="36"/><rect x="200" y="140" width="56" height="30"/>
+          <rect x="300" y="200" width="60" height="38"/><rect x="420" y="136" width="36" height="34"/>
+          <rect x="420" y="278" width="40" height="30"/><rect x="200" y="280" width="52" height="28"/>
+        </g>
+        <g>
+          <path d="M120 60c-8 0-14 6.2-14 14 0 10.5 14 25 14 25s14-14.5 14-25c0-7.8-6-14-14-14z" fill="#F2C94C"/><circle cx="120" cy="75" r="5.2" fill="#1E3442"/>
+          <path d="M330 90c-8 0-14 6.2-14 14 0 10.5 14 25 14 25s14-14.5 14-25c0-7.8-6-14-14-14z" fill="#FF6B57"/><circle cx="330" cy="105" r="5.2" fill="#1E3442"/>
+          <path d="M470 50c-8 0-14 6.2-14 14 0 10.5 14 25 14 25s14-14.5 14-25c0-7.8-6-14-14-14z" fill="#7FD8C4"/><circle cx="470" cy="65" r="5.2" fill="#1E3442"/>
+          <path d="M220 200c-8 0-14 6.2-14 14 0 10.5 14 25 14 25s14-14.5 14-25c0-7.8-6-14-14-14z" fill="#FF6B57"/><circle cx="220" cy="215" r="5.2" fill="#1E3442"/>
+          <path d="M60 220c-8 0-14 6.2-14 14 0 10.5 14 25 14 25s14-14.5 14-25c0-7.8-6-14-14-14z" fill="#7FD8C4"/><circle cx="60" cy="235" r="5.2" fill="#1E3442"/>
+          <path d="M430 210c-8 0-14 6.2-14 14 0 10.5 14 25 14 25s14-14.5 14-25c0-7.8-6-14-14-14z" fill="#F2C94C"/><circle cx="430" cy="225" r="5.2" fill="#1E3442"/>
+        </g>
+      </svg>
+      <figcaption>A sample map from the design prototype — not live data.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="waitlist" class="wait">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Waitlist</p>
+      <h2>First taste goes to the waitlist.</h2>
+      <p style="max-width:52ch">The app is in active development. Waitlist members get the first beta builds and a say in which city's map data we polish first.</p>
+      <dl class="faq">
+        <dt>When does it launch?</dt>
+        <dd>When it's good. iOS beta comes first; we'll email the waitlist the day builds go out.</dd>
+        <dt>Will it cost money?</dt>
+        <dd>The core app — pins, notes, your map — will be free. Pricing for anything beyond that isn't decided yet, and we'll say so plainly when it is.</dd>
+        <dt>Is my map public?</dt>
+        <dd>No. Your pins are yours. Sharing is opt-in, per map, per person.</dd>
+      </dl>
+    </div>
+    <form action="#" method="post" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='Thanks — the waitlist opens with our beta program. Nothing you typed left your browser.';">
+      <div>
+        <label for="wemail">Email</label>
+        <input id="wemail" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div>
+        <label for="wcity">Home city</label>
+        <input id="wcity" name="city" autocomplete="address-level2" placeholder="Chicago">
+      </div>
+      <button class="btn btn-coral" type="submit">Put me on the list</button>
+      <p class="form-note">Sign-ups open with the beta. Nothing you type here leaves your browser yet.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <h3>Restaurant Atlas</h3>
+      <p style="max-width:40ch;font-size:.93rem">A restaurant discovery app in development: your want-to-try list, your visits, and your notes — on one map.</p>
+    </div>
+    <div>
+      <h3>App</h3>
+      <a href="#features">Features</a>
+      <a href="#pins">The pin system</a>
+      <a href="#waitlist">Waitlist</a>
+    </div>
+    <div>
+      <h3>Site</h3>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+    <div class="fineprint">
+      <span>© 2026 Restaurant Atlas. All rights reserved.</span>
+      <span>The app described here is in development and not yet available to download.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
